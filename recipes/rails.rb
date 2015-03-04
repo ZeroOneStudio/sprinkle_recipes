@@ -1,9 +1,9 @@
 package :rails do
   description 'Ruby on Rails'
-  requires :ruby_enterprise
+  requires :ruby
   gem 'rails'
-  version '2.3.5'
-  
+  version '4.2.0'
+
   verify do
     has_gem 'rails'
   end

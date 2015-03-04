@@ -1,9 +1,9 @@
 # Package is unstable and may not work properly.
 package :redis do
   description 'Redis Database'
-  version '2.0.3'
+  version '2.8.19'
   s_ource "http://redis.googlecode.com/files/redis-#{version}.tar.gz"  # hack
-  
+
   push_text '', "/tmp/sprinkle-hack" do
   # i don't know why but noop method did not work, it's a pure hack
 
@@ -18,7 +18,7 @@ package :redis do
     pre :install, "mv r.conf redis-#{version}/redis.conf"
 
     # they have an error in their init script as well
-    pre :install, "cat redis-#{version}/utils/redis_init_script | sed '/SHUTDOWN/d' | sed 's/PID=$(cat $PIDFILE)/kill `cat $PIDFILE`/'> ris" 
+    pre :install, "cat redis-#{version}/utils/redis_init_script | sed '/SHUTDOWN/d' | sed 's/PID=$(cat $PIDFILE)/kill `cat $PIDFILE`/'> ris"
     pre :install, "mv ris redis-#{version}/utils/redis_init_script"
 
     pre :install, "sudo mv redis-#{version}/redis-server /opt/redis/"
@@ -43,4 +43,3 @@ package :redis do
     has_file '/usr/local/bin/redis-server'
   end
 end
-

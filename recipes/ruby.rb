@@ -2,9 +2,9 @@ package :ruby do
   requires :ruby_dependencies
   description 'Ruby Virtual Machine'
 
-  version '2.2.0'
+  version '2.2.1'
 
-  source "ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-#{version}.tar.gz"
+  source "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-#{version}.tar.gz"
 
   # patchlevel '290'
   # source "ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-#{version}-p#{patchlevel}.tar.gz"

@@ -1,20 +1,15 @@
-# package :nginx, :provides => :webserver do
-#   description 'Nginx Web Server'
-#
-#   apt 'nginx' do
-#     post :install, '/etc/init.d/nginx start'
-#   end
-#
-#   verify do
-#     has_executable '/usr/sbin/nginx'
-#     has_executable '/etc/init.d/nginx'
-#   end
-# end
-
 package :nginx_source, :provides => :webserver do
   requires :essentials, :nginx_dependencies
   description 'Nginx Web Server'
   version '1.7.10'
+  
+  initscript = File.join(File.dirname(__FILE__), 'nginx', 'nginx')
+  transfer initscript, "/etc/init.d/nginx", :sudo => true
+  
+  noop do
+    post :install, "sudo chmod +x /etc/init.d/nginx"
+    post :install, "sudo /usr/sbin/update-rc.d -f nginx defaults"
+  end
 
   source "http://nginx.org/download/nginx-#{version}.tar.gz" do
     post :install, '/etc/init.d/nginx start'
@@ -23,6 +18,7 @@ package :nginx_source, :provides => :webserver do
   verify do
     has_executable '/etc/init.d/nginx'
     has_process 'nginx'
+    matches_local initscript, "/etc/init.d/nginx"
   end
 end
 

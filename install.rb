@@ -1,5 +1,5 @@
 # Require our stack
-%w(htop essentials ruby git rails databases nginx_passenger redis imagemagick).each do |r|
+%w(htop essentials ruby git rails databases redis nginx imagemagick).each do |r|
   require File.join(File.dirname(__FILE__), 'recipes', r)
 end
 
@@ -7,7 +7,6 @@ policy :stack, :roles => :app do
   requires :ruby                  # RUBY
   requires :htop                  # htop
   requires :webserver             # Nginx
-  requires :appserver             # Passenger for Nginx
   requires :database              # MySQL or Postgres with appropriate ruby gems
   requires :git                   # Git or Mercurial
   requires :rails                 # Latest stable version of Ruby on Rails

@@ -1,18 +1,14 @@
 package :ruby do
-  requires :ruby_dependencies
   description 'Ruby Virtual Machine'
-
   version '2.2.1'
-
-  source "http://cache.ruby-lang.org/pub/ruby/2.2/ruby-#{version}.tar.gz"
-
-  # patchlevel '290'
-  # source "ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-#{version}-p#{patchlevel}.tar.gz"
-
-  verify { has_executable_with_version "/usr/local/bin/ruby", version }
+  source "http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-#{version}.tar.gz"
+  requires :ruby_dependencies
+  verify do
+    has_executable 'ruby'
+  end
 end
 
 package :ruby_dependencies do
   description 'Ruby Virtual Machine Build Dependencies'
-  apt %w( bison zlib1g-dev libssl-dev libreadline5-dev libncurses5-dev libyaml-0-2 file )
+  apt %w( curl file bison zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev )
 end

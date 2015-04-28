@@ -1,5 +1,5 @@
 # Fill host_address in
-set :host_address, "194.177.20.103"
+set :host_address, ""
 
 role :app, host_address
 role :web, host_address

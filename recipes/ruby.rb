@@ -1,10 +1,10 @@
 package :ruby do
   description 'Ruby Virtual Machine'
-  version '2.2.1'
+  version '2.2.2'
   source "http://ftp.ruby-lang.org/pub/ruby/2.2/ruby-#{version}.tar.gz"
   requires :ruby_dependencies
   verify do
-    has_executable 'ruby'
+    has_executable '/opt/bin/ruby'
   end
 end
 

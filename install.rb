@@ -6,10 +6,10 @@ end
 policy :stack, :roles => :app do
   requires :ruby                  # RUBY
   requires :htop                  # htop
-  requires :webserver             # Nginx
+  # requires :webserver             # Nginx
   requires :database              # MySQL or Postgres with appropriate ruby gems
   requires :git                   # Git or Mercurial
-  requires :rails                 # Latest stable version of Ruby on Rails
+  # requires :rails                 # Latest stable version of Ruby on Rails
   requires :redis                 # Redis database, recipe is not stable and not recomended to use at this time
   requires :imagemagick           # ImageMagick utility
 end

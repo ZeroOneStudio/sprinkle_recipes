@@ -2,10 +2,10 @@ package :nginx_source, :provides => :webserver do
   requires :essentials, :nginx_dependencies
   description 'Nginx Web Server'
   version '1.7.10'
-  
-  initscript = File.join(File.dirname(__FILE__), 'nginx', 'nginx')
+
+  initscript = File.join(File.dirname(__FILE__), '..', 'nginx', 'nginx')
   transfer initscript, "/etc/init.d/nginx", :sudo => true
-  
+
   noop do
     post :install, "sudo chmod +x /etc/init.d/nginx"
     post :install, "sudo /usr/sbin/update-rc.d -f nginx defaults"
